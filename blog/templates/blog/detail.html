@@ -2,9 +2,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% load staticfiles %}
-
-    <title>Faiza Ahsan</title>
+      {% load staticfiles %}
+    <title> {{ blog_post_detail.title }} </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -33,7 +32,7 @@
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="{% url 'homepage' %}">Faiza Ahsan </a>
+          <a class="navbar-brand" href="{% url 'homepage'%}">Faiza Ahsan </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,7 +42,7 @@
             <div class="navbar-nav ml-auto">
 
               <a class="nav-item nav-link active" href="https://github.com/Faiza1987">GitHub</a>
-              <a class="nav-item nav-link active" href="{% static 'AdaResume.pdf' %}">Resume</a>
+              <a class="nav-item nav-link active" href="{% static 'AdaResume.pdf' %}"> Resume </a>
               <a class="nav-item nav-link active" href="https://www.linkedin.com/in/faiza-husain/">LinkedIn</a>
               <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
 
@@ -54,44 +53,17 @@
     </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading"> Hi, I'm Faiza! </h1>
-      <p class="lead text-muted">My name is Faiza and I love to learn!.</p>
-      <p>
-        <a href="mailto:faiza.ahsan1222@gmail.com" class="btn btn-primary my-2"> Email Me </a>
-      </p>
-      <img src="{% static 'img.jpeg' %}"/>
+        <h3 class="text-center">
+            {{ blog_post_detail.title }}
+        </h3>
+        <p class="text-center"> {{ blog_post_detail.pub_date}} </p>
+        <img class="card-img-top" src="{{ blog_post_detail.image.url }}" />
+        <p class="card-text"> {{ blog_post_detail.body }}</p>
     </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-          {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{ job.image.url }}" />
-                <div class="card-body">
-                  <p class="card-text"> {{ job.description }}</p>
-
-                  <div class="d-flex justify-content-between align-items-center">
-
-                    <small class="text-muted">9 mins</small>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-      </div>
-    </div>
-  </div>
-
 </main>
+
+<hr />
 
 <footer class="text-muted">
   <div class="container text-center">
